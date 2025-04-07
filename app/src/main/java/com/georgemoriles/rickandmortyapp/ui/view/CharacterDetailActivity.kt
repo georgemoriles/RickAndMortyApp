@@ -3,10 +3,10 @@ package com.georgemoriles.rickandmortyapp.ui.view
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.georgemoriles.rickandmortyapp.data.model.CharacterItem
 import com.georgemoriles.rickandmortyapp.databinding.ActivityCharacterDetailBinding
 import com.georgemoriles.rickandmortyapp.domain.GetCharacterInfoUseCase
-import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -50,7 +50,7 @@ class CharacterDetailActivity : AppCompatActivity() {
     }
 
     private fun createUI(characterDetail: CharacterItem?) {
-        Picasso.get().load(characterDetail!!.image).into(binding.imgCharacter)
+        Glide.with(binding.imgCharacter.context).load(characterDetail!!.image).into(binding.imgCharacter)
         binding.tvCharacterName.text = characterDetail.name
         binding.tvGender.text = characterDetail.gender
         binding.tvStatus.text = characterDetail.status
