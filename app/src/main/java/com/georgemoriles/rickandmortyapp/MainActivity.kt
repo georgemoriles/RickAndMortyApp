@@ -7,6 +7,8 @@ import android.util.Log
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.georgemoriles.rickandmortyapp.data.model.CharacterItem
 import com.georgemoriles.rickandmortyapp.databinding.ActivityMainBinding
 import com.georgemoriles.rickandmortyapp.domain.GetCharacterUseCase
@@ -33,6 +35,8 @@ class MainActivity : AppCompatActivity() {
 
     var isSearching: Boolean  = false
 
+    var isLoading = false
+    val visibleThreshold = 2 // Carga más cuando quedan 2 ítems visibles
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,6 +88,40 @@ class MainActivity : AppCompatActivity() {
         binding.rvCharacter.layoutManager = GridLayoutManager(this, 2)
         binding.rvCharacter.adapter = characterAdapter
 
+        binding.rvCharacter.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = binding.rvCharacter.layoutManager as LinearLayoutManager
+                val totalItemCount = layoutManager.itemCount
+                val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
+
+                if (!isLoading && totalItemCount <= lastVisibleItem + visibleThreshold) {
+                    // Llegamos al final, cargar más
+                    loadMoreItems()
+                    isLoading = true
+                }
+
+            }
+        })
+
+    }
+
+    fun loadMoreItems() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val result = getCharacterUseCase.invoke(currentPape)
+
+            Log.d("jorge", "tamano" + result?.size.toString())
+            if (result != null) {
+                Log.i("JORGE", result.toString())
+                runOnUiThread {
+                    //characterList = result
+                    characterAdapter.addItems( result)
+                    currentPape++
+                    isLoading = false
+                }
+            }
+
+        }
     }
 
     private fun navigateToDetail(characterId: Int) {
