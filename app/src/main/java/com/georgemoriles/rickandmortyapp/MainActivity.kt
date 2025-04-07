@@ -45,6 +45,16 @@ class MainActivity : AppCompatActivity() {
 
         //characterViewModel.onCreate()
         initUI()
+        /*characterViewModel.characterItem.observe(this, Observer { currentCharacter ->
+            binding.rvCharacter.apply {
+                layoutManager = GridLayoutManager(context, 2)
+                adapter = characterAdapter
+            }
+        })*/
+
+        /* characterViewModel.isLoading.observe(this, Observer {
+             binding.loading.isVisible = it
+         })*/
 
     }
 
