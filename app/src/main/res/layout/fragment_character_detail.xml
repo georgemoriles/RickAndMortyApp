@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    tools:context=".ui.view.CharacterDetailFragment">
+
+    <!-- Botón de retroceso -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_margin="16dp"
+
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <!-- Imagen del personaje -->
+    <ImageView
+        android:id="@+id/imgCharacter"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:scaleType="centerCrop"
+
+        android:elevation="8dp"/>
+
+    <!-- Contenedor de información -->
+    <LinearLayout
+        android:id="@+id/characterInfoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgCharacter"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginHorizontal="16dp"
+        android:padding="16dp"
+        android:background="?attr/colorBackgroundFloating"
+        android:elevation="10dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:clipToOutline="true">
+
+        <!-- Nombre del personaje -->
+        <TextView
+            android:id="@+id/tvCharacterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
+            android:text="Character Name"
+            android:gravity="center"
+            android:paddingBottom="16dp" />
+
+        <!-- Características del personaje -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvGender"
+                style="@style/CharacterAttribute"
+                android:text="Gender: Male" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                style="@style/CharacterAttribute"
+                android:text="Status: Alive" />
+
+            <TextView
+                android:id="@+id/tvSpecies"
+                style="@style/CharacterAttribute"
+                android:text="Species: Human" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                style="@style/CharacterAttribute"
+                android:text="Location: Earth" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

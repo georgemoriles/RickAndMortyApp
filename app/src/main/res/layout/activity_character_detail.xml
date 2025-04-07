@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_dark"
+    tools:context=".ui.view.CharacterDetailFragment">
+
+    <!-- Botón de retroceso -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_margin="16dp"
+
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <!-- Imagen del personaje -->
+    <ImageView
+        android:id="@+id/imgCharacter"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/not_found"
+        android:elevation="8dp"/>
+
+    <!-- Contenedor de información -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/viewHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_below="@id/imgCharacter"
+        app:cardCornerRadius="16dp">
+
+        <LinearLayout
+            android:id="@+id/characterInfoContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgCharacter"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginHorizontal="16dp"
+            android:padding="16dp"
+            android:background="?attr/colorBackgroundFloating"
+            android:elevation="10dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clipToOutline="true">
+
+            <!-- Nombre del personaje -->
+            <TextView
+                android:id="@+id/tvCharacterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorPrimary"
+                android:text="Character Name"
+                android:gravity="center"
+                android:paddingBottom="16dp" />
+
+            <!-- Características del personaje -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_weight="1"
+                        android:id="@+id/gender"
+                        style="@style/CharacterAttribute"
+                        android:textColor="@color/green_light"
+                        android:text="@string/gender" />
+                    <TextView
+                        android:layout_weight="2"
+                        android:id="@+id/tvGender"
+                        style="@style/CharacterAttribute"
+                        android:gravity="center"
+                        android:text="Gender: Male" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_weight="1"
+                        style="@style/CharacterAttribute"
+                        android:textColor="@color/green_light"
+                        android:text="@string/status" />
+                    <TextView
+                        android:id="@+id/tvStatus"
+                        android:layout_weight="2"
+                        style="@style/CharacterAttribute"
+                        android:gravity="center"
+                        android:text="Status: Alive" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/species"
+                        android:layout_weight="1"
+                        style="@style/CharacterAttribute"
+                        android:textColor="@color/green_light"
+                        android:text="@string/species" />
+                    <TextView
+                        android:id="@+id/tvSpecies"
+                        android:layout_weight="2"
+                        style="@style/CharacterAttribute"
+                        android:gravity="center"
+                        android:text="Species: Human" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_weight="1"
+                        style="@style/CharacterAttribute"
+                        android:textColor="@color/green_light"
+                        android:text="@string/location" />
+                    <TextView
+                        android:id="@+id/tvLocation"
+                        android:layout_weight="2"
+                        style="@style/CharacterAttribute"
+                        android:gravity="center"
+                        android:text="Location: Earth" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/episodes"
+                        android:layout_weight="1"
+                        style="@style/CharacterAttribute"
+                        android:textColor="@color/green_light"
+                        android:text="@string/episode" />
+                    <TextView
+                        android:id="@+id/tvEpisodes"
+                        android:layout_weight="2"
+                        style="@style/CharacterAttribute"
+                        android:gravity="center"
+
+                        android:text="Episodios: Earth" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

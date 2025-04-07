@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Rick and Morty App</string>
+    <string name="title_activity_character_detail">CharacterDetailActivity</string>
+
+    <string name="title_activity_character_deteil">CharacterDeteilActivity</string>
+
+    <string name="gender">Género:</string>
+    <string name="status">Estatus:</string>
+    <string name="type">Tipo:</string>
+    <string name="species">Especies:</string>
+    <string name="episode">Episódios:</string>
+    <string name="location">Localización:</string>
+
+
+</resources>
